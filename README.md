@@ -10,6 +10,10 @@
 <!-- HEADER -->
 <br />
 <div align="center">
+  <a href="https://github.com/MODAJ18/Playing_Cards">
+    <img src="header.png" alt="Logo" width="80" height="80">
+  </a>
+  
   <h1 align="center">Playing_Cards_Detector</h1>
   <p align="center">
     A Computer-Vision Project for detecting Playing Cards and Applying it to Tarneeb (with yolov5)
