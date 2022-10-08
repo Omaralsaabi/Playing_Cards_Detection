@@ -95,14 +95,14 @@ py-env\Scripts\activate
 pip install -r requirements.txt
 ```
 5. download weights file for the playing card detector model <a href="https://drive.google.com/uc?export=download&id=1-CASlZnJ9E4eyXDamMLOCAdW29_0Voas">here</a>
-6. Store the file in yolov5_share/runs/train
+6. Store the file in yolov5_share/runs/model_trained
 7. back in root directory, navigate to yolov5_share
 ```sh
 cd yolov5_share
 ```
 8. to start detection with webcam, type the following command
 ```sh
-python detect.py --weights runs/train/best.pt --source 0
+python detect.py --weights runs/model_trained/best.pt --source 0
 ```
 9. Upon launch of webcam window, you can play around with the detector (start playing tarneeb upon pressing t)
 
@@ -116,8 +116,8 @@ python detect.py --weights runs/train/best.pt --source 0
 - [x] Collecting Data
 - [x] Building Detector Model
 - [x] Test with Sample Images and Webcam
-- [x] Implement Tarneeb into the Detector
-- [ ] Building Another Model with Tensorflow API
+- [x] Write implementation for Tarneeb game using detector inputs
+- [ ] Building Another Model with Tensorflow Object Detection API
 - [ ] Stylizing Webcam Output for Tarneeb
 
 See the [open issues](https://github.com/MODAJ18/Playing_Cards/issues) for a full list of proposed features (and known issues).
