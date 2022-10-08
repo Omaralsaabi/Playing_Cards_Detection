@@ -82,20 +82,20 @@ you must have:
 ```sh
 cd Playing_Cards
 ```
-2. make a virtual environment
+2. Make a virtual environment
 ```sh
 python -3 -m venv py-env
 ```
-3. activate virtual environment
+3. Activate virtual environment
 ```sh
 py-env\Scripts\activate
 ```
-4. install requirements 
+4. Install requirements 
 ```sh
 pip install -r requirements.txt
 ```
 5. download weights file for the playing card detector model <a href="https://drive.google.com/uc?export=download&id=1-CASlZnJ9E4eyXDamMLOCAdW29_0Voas">here</a>
-6. store the file in runs/train
+6. Store the file in yolov5_share/runs/train
 7. back in root directory, navigate to yolov5_share
 ```sh
 cd yolov_share
