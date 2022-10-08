@@ -48,7 +48,7 @@ all image annotation and augmentation work in the project is done using the foll
 * python scripts using opencv 
 * Roboflow
 
-Model is trained and built with yolov5m pretrained weights on top of a collection of 50000+ images
+Model is trained and built with yolov5m pretrained weights, with a dataset consisting of a collection of 50000+ images
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
