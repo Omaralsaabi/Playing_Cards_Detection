@@ -136,6 +136,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Mohammad Almasri - [@linkedin](https://www.linkedin.com/in/mohammad-almasri-964867197/) - modaj18@gmail.com
+
 Omar Alsabi - [@linkedin](https://www.linkedin.com/in/omar-alsaabi-32675b193/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
