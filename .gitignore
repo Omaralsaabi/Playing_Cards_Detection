@@ -1,0 +1,16 @@
+# added 
+itask2-doc.docx
+Model_2 (Deprecated)/
+Model_3 (Deprecated)/
+test_images/
+other_data/
+GPU setup/
+.ipynb_checkpoints/
+venv4/
+train/
+valid/
+test/
+yolov5/
+yolov5_share/runs/detect
+yolov5_share/DRAFT
+Model_1/
