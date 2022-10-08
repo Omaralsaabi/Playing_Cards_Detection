@@ -22,14 +22,15 @@ all image annotation and augmentation work in the project is done using the foll
 [contributors-url]: https://github.com/MODAJ18/Playing_Cards/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/MODAJ18/Playing_Cards.svg?style=for-the-badge
 [forks-url]: https://github.com/MODAJ18/Playing_Cards/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[stars-shield]: https://img.shields.io/github/stars/MODAJ18/Playing_Cards.svg?style=for-the-badge
+[stars-url]: https://github.com/MODAJ18/Playing_Cards/stargazers
+[issues-shield]: https://img.shields.io/github/issues/MODAJ18/Playing_Cards.svg?style=for-the-badge
+[issues-url]: https://github.com/MODAJ18/Playing_Cards/issues
+[license-shield]: https://img.shields.io/github/license/MODAJ18/Playing_Cards.svg?style=for-the-badge
+[license-url]: https://github.com/MODAJ18/Playing_Cards/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://www.linkedin.com/in/mohammad-almasri-964867197/
+
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
