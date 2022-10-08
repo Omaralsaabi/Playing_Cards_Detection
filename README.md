@@ -78,7 +78,10 @@ you must have:
 
 ### Installation
 
-1. Open command line (or terminal), clone the reopsitory, then navigate to root directory of the repo
+1. Open command line (or terminal), clone the reopsitory, then navigate to repo directory
+```sh
+cd Playing_Cards
+```
 2. make a virtual environment
 ```sh
 python -3 -m venv py-env
