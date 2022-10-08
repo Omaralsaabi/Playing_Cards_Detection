@@ -54,6 +54,13 @@ all image annotation and augmentation work in the project is done using the foll
 
 Model is trained and built with yolov5m pretrained weights, with a dataset consisting of a collection of 50000+ images
 
+some examples of predictions with the detector are shown below:
+
+[![Model Predictions][Prediction 1]](sample_predictions/1.jpg)
+
+[![Model Predictions][Prediction 2]](sample_predictions/2.PNG)
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
