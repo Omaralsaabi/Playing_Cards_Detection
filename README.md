@@ -68,28 +68,28 @@ you must have:
 
 1. with CMD, navigate to root directory of the repo
 2. make a virtual environment
-   ```sh
-   python -3 -m venv py-env
-   ```
+```sh
+python -3 -m venv py-env
+```
 3. install requirements 
-   ```sh
-   pip install -r requirements.txt
-   ```
+```sh
+pip install -r requirements.txt
+```
 4. activate virtual environment
-   ```sh
-   py-venv\Scripts\activate
-   ```
+```sh
+py-venv\Scripts\activate
+```
 5. download weights file for the playing card detector model <a href="https://drive.google.com/uc?export=download&id=1-CASlZnJ9E4eyXDamMLOCAdW29_0Voas">here</a>
 6. store the file in runs/train
 7. back in root directory, navigate to yolov5_share
-  ```sh
-   cd yolov_share
-   ```
+```sh
+cd yolov_share
+```
 8. to start detection with webcam, type the following command
-   ```sh
-   python detect.py --weights runs/train/best.pt --source 0
-   ```
-9. Upon launch of web cam window, you can play around with the detector (start playing tarneeb upon pressing t)
+```sh
+python detect.py --weights runs/train/best.pt --source 0
+```
+9. Upon launch of webcam window, you can play around with the detector (start playing tarneeb upon pressing t)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
