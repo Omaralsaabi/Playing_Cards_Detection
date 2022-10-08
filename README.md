@@ -62,7 +62,6 @@ Instructions for setting up predictor and playing Tarneeb.
 you must have:
 * python 3.7 or above
 * webcam in computer device
-* model weights for using detection (example model weights: https://drive.google.com/uc?export=download&id=1-CASlZnJ9E4eyXDamMLOCAdW29_0Voas)
 
 ### Installation
 
