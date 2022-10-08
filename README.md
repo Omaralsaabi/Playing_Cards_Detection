@@ -15,7 +15,7 @@
     A Computer-Vision Project for detecting Playing Cards and Applying it to Tarneeb (with yolov5)
   </p>
 </div>
-
+<br />
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -37,6 +37,7 @@
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
+<br />
 
 
 <!-- ABOUT THE PROJECT -->
