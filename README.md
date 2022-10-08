@@ -102,7 +102,7 @@ cd yolov5_share
 ```
 8. to start detection with webcam, type the following command
 ```sh
-python detect.py --weights runs/model_trained/best.pt --source 0
+python detect.py --weights runs/model_trained/best_model.pt --source 0
 ```
 9. Upon launch of webcam window, you can play around with the detector (start playing tarneeb upon pressing t)
 
