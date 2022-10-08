@@ -110,43 +110,78 @@ class Player:
 def getSuit(x):
     return x.suit
 
-def distribute():
-    # function distributing cards to players and making the players global variable for later use
+def distribute(t_names):
     global player_names
-    player_names = {}
-
-    myDeck = Deck()
-    myDeck.shuffle()
     global player1
-    global p1_name
-
-    p1_name=input("Player 1 -> Enter name: ")
-    player1 = Player(p1_name)
-    player1.draw(myDeck)
-    player1.showHand()
-
     global player2
-    global p2_name
-    p2_name = input("Player 2 -> Enter name: ")
-    player2 = Player(p2_name)
-    player2.draw(myDeck)
-    player2.showHand()
-
     global player3
-    global p3_name
-    p3_name = input("Player 3 -> Enter name: ")
-    player3 = Player(p3_name)
-    player3.draw(myDeck)
-    player3.showHand()
-
     global player4
+    global p1_name
+    global p2_name
+    global p3_name
     global p4_name
-    p4_name = input("Player 4 -> Enter name: ")
-    player4 = Player(p4_name)
-    player4.draw(myDeck)
-    player4.showHand()
 
-    player_names = {'0': p1_name, '1': p2_name, '2': p3_name, '3': p4_name}
+    if t_names == None:
+        # function distributing cards to players and making the players global variable for later use
+        player_names = {}
+
+        myDeck = Deck()
+        myDeck.shuffle()
+
+        p1_name=input("Player 1 -> Enter name: ")
+        player1 = Player(p1_name)
+        player1.draw(myDeck)
+        player1.showHand()
+
+        p2_name = input("Player 2 -> Enter name: ")
+        player2 = Player(p2_name)
+        player2.draw(myDeck)
+        player2.showHand()
+
+        p3_name = input("Player 3 -> Enter name: ")
+        player3 = Player(p3_name)
+        player3.draw(myDeck)
+        player3.showHand()
+
+        p4_name = input("Player 4 -> Enter name: ")
+        player4 = Player(p4_name)
+        player4.draw(myDeck)
+        player4.showHand()
+
+        player_names = {'0': p1_name, '1': p2_name, '2': p3_name, '3': p4_name}
+    else:
+        print('distribute: proceeding with previous player names..')
+        player_names = {}
+
+        myDeck = Deck()
+        myDeck.shuffle()
+
+        p1_name = t_names['0']
+        player1 = Player(p1_name)
+        player1.draw(myDeck)
+        player1.showHand()
+
+        p2_name = t_names['1']
+        player2 = Player(p2_name)
+        player2.draw(myDeck)
+        player2.showHand()
+
+        p3_name = t_names['2']
+        player3 = Player(p3_name)
+        player3.draw(myDeck)
+        player3.showHand()
+
+        p4_name = t_names['3']
+        player4 = Player(p4_name)
+        player4.draw(myDeck)
+        player4.showHand()
+        player_names = {'0': p1_name, '1': p2_name, '2': p3_name, '3': p4_name}
+        print(f'Player 1: {p1_name}')
+        print(f'Player 2: {p2_name}')
+        print(f'Player 3: {p3_name}')
+        print(f'Player 4: {p4_name}')
+        print()
+
     return myDeck
 
 def resort(players,x):
@@ -156,71 +191,65 @@ def resort(players,x):
             players=players[players.index(i):]+players[:players.index(i)]
     return players
 
-def start(inp):
-
+def start(inp, t_data, t_names=False):
     # main functions with bidding and playing for user and AI
-    # print('start', inp)
-
-    print ("\nWelcome to my Tarneeb game!!")
-    print ("\n")
-    myDeck = distribute()
+    print ("Welcome to my Tarneeb game!\n")
+    myDeck = distribute(t_names)
     bids = []
     players = [player1, player2, player3, player4]
 
     def bid():
-        # TODO: players choose their (input not camera)
         bs = ["7", "8", "9", "10", "11", "12", "13"]
+
         bids = []
         global trump
         global greatest_player
 
         for i in range(4):
             p_name = player_names[str(i)]
-            bidsNumber = input(p_name + "'s bid: ")
+            correct_input = False
+            while not correct_input:
+                bidsNumber = input(p_name + "'s bid: ")
+                correct_input = False
+                if str(bidsNumber) not in bids and str(bidsNumber) in bs:
+                    bids.append(bidsNumber)
+                    correct_input = True
+                elif bidsNumber == '13':
+                    bids.append("13")
+                    correct_input = True
+                elif bidsNumber == "pass":
+                    bids.append(bidsNumber)
+                    correct_input = True
+                else:
+                    try:
+                        int(bidsNumber)
+                        if int(bidsNumber) >= 7 and str(bidsNumber) not in bs:
+                            print('Input should be higher than the bid before, or you should pass, try again\n')
+                        else:
+                            print(f'wrong range of number should be one of these values {bs}, try again\n')
+                    except:
+                        print("Input should be an integer from 7 to 13 or 'pass', try again\n")
 
-            if str(bidsNumber) not in bids and str(bidsNumber) in bs:
-                bids.append(bidsNumber)
-            elif bidsNumber == '13':
-                bids.append("13")
-            elif bidsNumber == "pass":
-                bids.append(bidsNumber)
-            else:
-                try:
-                    int(bidsNumber)
-                    if int(bidsNumber) >= 7 and str(bidsNumber) not in bs:
-                        print('Input should be higher than the bid before, or you should pass, try again\n\n')
-                        return None
-                    else:
-                        print(f'wrong range of number should be one of these values {bs}, try again\n\n')
-                        return None
-                except:
-                    print("Input should be an integer from 7 to 13 or 'pass', try again\n\n")
-                    return None
+                if bids.count("pass") == 4:
+                    print(f"Player 4 ({p_name}) must bid if everybody else is passing")
+                    correct_input = False
 
-            print('bids layed: ', bids)
-            # print('bids layed: ', end='')
-            # for i in range(4):
-            #     print(f"{player_names[str(i)]}->{bids[i]}", end=', ')
             if bids[i] != "pass":
                 bs = bs[bs.index(bids[i]):]
-
             print("Player " + p_name + "'s bid: " + str(bids[i]))
 
         greatest = 0
         greatest_player = "unknown"
-        for bid_i in bids:
+        for i, bid_i in enumerate(bids):
             try:
                 bid_i = int(bid_i)
                 if type(bid_i) == int:
                     if bid_i > greatest:
                         greatest = bid_i
                         greatest_player = player_names[str(bids.index(str(bid_i)))]
+                bids[i] = int(bids[i])
             except:
-                continue
-
-        if bids.count("pass") == 4:
-            print("error! someone has to bid, the game can't proceed, try again")
-            return None
+                bids[i] = -1
 
         # who is greatest bidder?
         print(f'greatest bidder is {greatest_player} (bid: {greatest})')
@@ -236,124 +265,31 @@ def start(inp):
                     print("Wrong suit! choose Spades,Diamonds,Hearts,Clubs")
                     trump = input("Select Suit:")
                 print(f"the trump is {trump}, let's start the round")
-        return True
+        return bids
 
-    # TODO: use this later
-    x1 = bid()
-    if x1 == None:
-        return None, False
+    # bid function
+    bids = bid()
 
-    # TODO: save info in files
-    # who starts first: (greateset_bidder or winner_last_round)
-    # trump card
-    # round number
-    # Player cards self.hand
-    # trick count for each player
-    # discarded cards
-
-
-    ''' comments hidden '''
-    # #AI for bidding
-    #
-    # bs=["7","8","9","10","11","12","13"]
-    #
-    # if bids[0]!="pass":
-    #     bs=bs[bs.index(bids[0]):]
-    #
-    # trump=""
-    # trumps=[]
-    # bidsNumber=0
-    #
-    # for p in [player2,player3,player4]:
-    #
-    #     change=False
-    #     bidsNumber=0
-    #
-    #     for s in p.fakeHand:
-    #         if len(s) > bidsNumber:
-    #             bidsNumber = len(s)
-    #             big=s
-    #             change=True
-    #
-    #             if p.fakeHand.index(s)==0:
-    #                 trump="Clubs"
-    #             elif p.fakeHand.index(s)== 1:
-    #                 trump="Diamonds"
-    #             elif p.fakeHand.index(s) == 2:
-    #                 trump = "Hearts"
-    #             elif p.fakeHand.index(s) == 3:
-    #                 trump = "Spades"
-    #
-    #     trumps.append(trump)
-    #     p.fakeHand.pop(p.fakeHand.index(big))
-    #
-    #     for cs in p.fakeHand:
-    #         for c in range(len(cs)):
-    #             if cs[c].rank in ["Ace","King","Queen"]:
-    #                 bidsNumber+=1
-    #
-    #     if str(bidsNumber) not in bids and str(bidsNumber) in bs:
-    #         bids.append(str(bidsNumber))
-    #         bs=bs[bs.index(str(bidsNumber)):]
-    #     elif bidsNumber>13:
-    #         bids.append("13")
-    #     else:
-    #         bids.append("pass")
-    #
-    # trumps=[""]+trumps
-    #
-    # for i in range(1,4):
-    #     print ("Player " + str(i + 1)+ " bid: " + str(bids[i]))
-    #
-    # # go through bids (greatest bid wins)
-    # for b in range(len(bids)):
-    #     try:
-    #         int(bids[b])
-    #         bids[b]=int(bids[b])
-    #     except:
-    #         pass
-    #
-    # greatest=0
-    # for bid_i in bids:
-    #     if type(bid_i)==int:
-    #         if bid_i > greatest:
-    #             greatest = bid_i
-    #             trump = input('player i, choose your trump: ')
-    #
-    # if bids.count("pass")==4:
-    #     print (random.choice(["Player 2","Player 3"])+ " says: You can't do that Player 4, you gotta bid")
-    #     bids[-1]=7
-    #     greatest=7
-    #     trump=trumps[-1]
-    #     print ("Ok fine, we will play for a 7")
-    #
-    # # who is greatest bidder?
-    # if greatest==bids[0]:
-    #     greatestBidder=p1_name
-    # else:
-    #     greatestBidder="Player "+str(bids.index(greatest)+1)
-    #
-    # for p in players:
-    #     if p.name==greatestBidder:
-    #         if p.name==p1_name:
-    #             print ("\nHey "+greatestBidder+" , please select Spades, Diamonds, Hearts, or Clubs")
-    #             trump=input("Select Suit:")
-    #             while trump not in ["Spades", "Diamonds", "Hearts", "Clubs"]:
-    #                 print ("Wrong suit! choose Spades,Diamonds,Hearts,Clubs")
-    #                 trump=input("Select Suit:")
-    #             print ("\n"+random.choice(["Player 2","Player 3","Player4"])+" says: let's beat this tarneeb \n")
-    #         else:
-    #             print ("\n"+greatestBidder+" , please select Spades, Diamonds, Hearts, or Clubs")
-    #             print ("Uhhhh, I choose: "+trump+"\n")
-    #             print (random.choice(["Player 2","Player 3","Player 4"])+" says: let's beat this tarneeb \n")
-
-    data = {}
+    # preparing data
+    data = t_data.copy()
     data['trump'] = trump
     data['greatestBidder'] = greatestBidder
     data['points'] = {}
     data['players'] = players
     data['discardedCards'] = []
     data['playedCards'] = []
+    data['teamAssignments'] = {'team 1': [player1, player3], 'team 2': [player2, player4]}
+    # data['teamBids'] = {'team 1': max([bids[0], bids[2]]), 'team 2': max([bids[1], bids[3]])}
+    data['teamWins'] = {'team 1': 0, 'team 2': 0}
+
+    if greatestBidder in data['teamAssignments']['team 1']:
+        data['bid'] = {'team 1': max(bids), 'team 2': -1}
+        print(f"bid to match: {data['bid']}")
+    elif greatestBidder in data['teamAssignments']['team 2']:
+        data['bid'] = {'team 2': max(bids), 'team 1': -1}
+        print(f"bid to match: {data['bid']}")
+    else:
+        print('max bid set is not for any of the players in either team!')
 
     return data, True
 
@@ -362,8 +298,14 @@ def play(data_used, inp, c_order, t_rounds):
     print(inp)
     print(data_used)
     data_used_before = data_used.copy()
+    # data_used_before['trump'] = data_used['trump']
+    # data_used_before['greatestBidder'] = data_used['greatestBidder'].copy()
+    data_used_before['points'] = data_used['points'].copy()
+    data_used_before['players'] = data_used['players'].copy()
+    data_used_before['discardedCards'] = data_used['discardedCards'].copy()
+    data_used_before['playedCards'] = data_used['playedCards'].copy()
 
-    print(f"Tarneeb ({data_used['trump']}): round {t_rounds}\n")
+    print(f"Tarneeb ({data_used['trump']}): round {t_rounds + 1}\n")
     print(f"PLAYERS: ")
     for p in data_used['players']:
         print(f'{p} \t {p.name}')
@@ -430,34 +372,31 @@ def play(data_used, inp, c_order, t_rounds):
             bottom = [card, (x, y)]
             bottom[0] = dict_conversion[bottom[0]]
             placement_order.append(bottom)
-    print(f"p1:{bottom}\n p2:{right}\n p3:{top}\n p4:{left}")
+    print(f"PLACEMENTS --> p1:{bottom}\n p2:{right}\n p3:{top}\n p4:{left}")
     print(f"old order {placement_order}")
-
-    # reorder data_used['players']
-    # placement_order should be used to check if placement is correct with reordering
     cut_off = data_used['players'].index(data_used['greatestBidder'])
     data_used['players'] = data_used['players'][cut_off:] + data_used['players'][:cut_off]
     print(f"new order {placement_order}")
+    print()
 
     # placement order check with Player objects
+    print(f"if {placement_order[0][0]} in {list(map(lambda x: f'{x.rank} {x.suit}', data_used['players'][0].hand))}")
     if placement_order[0][0] in list(map(lambda x: f"{x.rank} {x.suit}", data_used['players'][0].hand)):
         print('Order of cards placed is correct! proceeding')
     else:
         print('Cards Placement order is incorrect,')
         print(f"restart the round with new input please")
-        while not keyboard.is_pressed('r'):
-            pass
-        return
+        return data_used_before, t_rounds
+    print()
 
     # (play card + order card) check
-    print(f'new order: {placement_order}')
     for i in range(4):
         # confirmed whether each player played a card in their hand
         c = placement_order[i][0]
         found = False
         player_i = data_used['players'][i]
-        print(f"{player_i.name}'s Cards: {player_i.hand}")
-        print(f"new order i {c}")
+        print(f"checking {player_i.name}'s Cards: {player_i.hand}")
+        print(f"{player_i.name} played{c}")
         if c in list(map(lambda x: f"{x.rank} {x.suit}", player_i.hand)):
             found = True
         if found:
@@ -465,24 +404,21 @@ def play(data_used, inp, c_order, t_rounds):
         else:
             print(f"player {i+1} ({player_i.name}) ---> does not have the card {c}")
             print(f"restart the round with new input please")
-            while not keyboard.is_pressed('r'):
-                pass
-            return
-            return data_used, t_rounds
+            return data_used_before, t_rounds
+        print()
 
 
         c_order[i] = dict_conversion[c_order[i].split(' ')[0]]
         # order of card check
-        print(f"{c} == {c_order[i]}")
+        print(f"{c}(placed) == {c_order[i]}(input order {i+1})")
         if c == c_order[i]:
             print(f"player {i+1} ({player_i.name}) ---> input order is consistent with placement order")
         else:
             print(f"player {i+1} ({player_i.name}) ---> input order is inconsistent with placement order!")
             print(f"restart the round with new input please")
-            while not keyboard.is_pressed('r'):
-                pass
-            return
-            return data_used, t_rounds
+            return data_used_before, t_rounds
+        print()
+    print()
 
     print('all good')
     while not keyboard.is_pressed('r'):
@@ -495,30 +431,29 @@ def play(data_used, inp, c_order, t_rounds):
     # data_used['playedCards']
     # data_used['trump']
     # data_used['discardedCards']
-    print(f"\n\n\n PHASE 2 (round {t_rounds})")
+    print(f"\n\nPHASE 2 (round {t_rounds})")
     for p_c in data_used['players']:
         print(f"{p_c.name}'s cards for the current round: {p_c.hand}")
     print(c_order)
 
-    # discardedCards = [] # TODO: ??
-
+    # adding played cards
     for i in range(4):
-        if c_order[i] not in data_used['playedCards']:
+        if c_order[i] not in data_used['discardedCards']:
             data_used['playedCards'] += [c_order[i]]
-            print(f"used cards for the round {data_used['playedCards']}")
         else:
             print(f"{data_used['players'][i]} played this card!")
-
+    print(f"used cards for the round {data_used['playedCards']}")
     print('\n')
-    # winner = Player Object
+
+    # Apply tarneeb rules for the round
     winner = None
     trump_exists = False
     r_convresions = {-1:-1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10 ,'Jack': 11, 'Queen': 12, 'King': 13, 'Ace': 14}
-
     for i, c_played in enumerate(data_used['playedCards']):
-        print(f"{c_played} in {data_used['players'][i].hand}", end='\n\n')
+        print(f"-------{i+1}: {c_played} in {data_used['players'][i].hand}-------", end='\n')
+        print(f'did player play the card {c_played}', end=': ')
         if c_played in list(map(lambda x: f"{x.rank} {x.suit}", data_used['players'][i].hand)):
-
+            print('no')
             if i == 0:
                 kind_r, kind_s = c_played.split(' ')
                 kind_r = r_convresions[kind_r]
@@ -528,21 +463,37 @@ def play(data_used, inp, c_order, t_rounds):
                     trump_r, trump_s = -1, data_used['trump']
                 trump_r = r_convresions[trump_r]
 
+            # determine winner of round
             r, s = c_played.split(' ')
             r = r_convresions[r]
+            player_suits = list(map(lambda x: f"{x.suit}", data_used['players'][i].hand))
+            if ((s == kind_s) and (r >= kind_r) and (not trump_exists)):
+                winner = data_used['players'][i]
+                kind_r = r
+            elif ((s == kind_s)):
+                pass
+            elif (kind_s in player_suits):
+                print(f"since the first player ({data_used['players'][0].name}) played a card of type {kind_s},\
+{data_used['players'][i].name} must play a card of that type too, since he has it")
+                print(f"round canceled, restart the round with new input please")
+                return data_used_before, t_rounds
+
             if (s == trump_s) and (r > trump_r):
                 winner = data_used['players'][i]
                 trump_r = r
-                # data_used['trump'] = f'{r} {s}'
                 trump_exists = True
-            elif ((s == kind_s) and (r >= kind_r) and (not trump_exists)):
-                winner = data_used['players'][i]
-                kind_r = r
-                # data_used['trump'] = f'{r} {s}'
+        else:
+            print('yes')
+            print(f"restart the round with new input please")
+            return data_used_before, t_rounds
 
-            # print(f"removing {c_played} from {data_used['players'][i].hand}")
+    for i, c_played in enumerate(data_used['playedCards']):
+        if c_played in list(map(lambda x: f"{x.rank} {x.suit}", data_used['players'][i].hand)):
+            r, s = c_played.split(' ')
+            r = r_convresions[r]
 
-            k=0
+            # removing played cards for round from hand
+            k = 0
             length = len(data_used['players'][i].hand)
             while k < length:
                 r_removal = list(r_convresions.keys())[list(r_convresions.values()).index(r)]
@@ -554,328 +505,36 @@ def play(data_used, inp, c_order, t_rounds):
                     length -= 1
                 else:
                     k += 1
+    print('-' * 50)
 
-        else:
-            print(f"the card {c_played} has already been played!")
-            return
+
 
     # finalizing the winner of round
     if winner.name not in data_used['points']:
         data_used['points'][f'{winner.name}'] = 1
     else:
         data_used['points'][f'{winner.name}'] += 1
-
     data_used['greatestBidder'] = winner
+    data_used['discardedCards'].extend(data_used['playedCards'])
+    data_used['playedCards'] = []
+
+    print('----------------------- ROUND RESULT -----------------------')
     print(f'winner: {winner.name}')
+    print('Team Points')
+    for team_name in data_used['teamAssignments'].keys():
+        team_players = data_used['teamAssignments'][team_name]
+        if winner in team_players:
+            data_used['teamWins'][team_name] += 1
+        print(f"{team_name}: {data_used['teamWins'][team_name]} Points")
     print(f"next round is started by: {data_used['greatestBidder'].name}")
     for i, p_c in enumerate(data_used['players']):
         print(f"{p_c.name}'s cards for the next round: {p_c.hand}")
+    print(f"Tarneeb is {data_used['trump']}")
+    print(f"Discarded Cards: {data_used['discardedCards']}")
     print(f"Player Points: {data_used['points']}")
+    print('------------------------------------------------------------')
+    print('\ninput cards for the next round please')
 
     return data_used, t_rounds + 1
 
 
-
-
-
-
-
-
-    # TODO: rounds (here input for each round from camera)
-    for i in range(13):
-        print ("\n")
-        # player1.showHand()
-        playedCards=[]
-        winner=""
-        if playedCards == []:
-            card = False
-            length = len(j.hand)
-
-            while not card:
-                k = 0
-                # TODO: play card here
-                played = input(p1_name + " plays: ")
-                played = played.split(" ")
-
-                while len(j.hand) == length and k < length:
-                    if played[0] == str(j.hand[k].rank) and played[1] == j.hand[k].suit:
-                        p = j.hand.pop(k)
-                        playedCards.append(p)
-                        card = True
-                    k += 1
-
-                if card == False:
-                    print(random.choice(
-                        ["Player 2", "Player 4"]) + " says: Please stop cheating and play a valid card smh")
-
-
-        # TODO: player turn
-        for j in players:
-            if j.name==p1_name:
-                if playedCards==[]:
-                    card=False
-                    length=len(j.hand)
-
-                    while not card:
-                        k=0
-                        # TODO: play card here
-                        played=input(p1_name + " plays: ")
-                        played=played.split(" ")
-
-                        while len(j.hand)==length and k<length:
-                            if played[0]==str(j.hand[k].rank) and played[1]==j.hand[k].suit:
-                                p=j.hand.pop(k)
-                                playedCards.append(p)
-                                card=True
-                            k+=1
-
-                        if card==False:
-                            print (random.choice(["Player 2","Player 4"])+" says: Please stop cheating and play a valid card smh")
-
-                # TODO: continue here
-                elif playedCards!=[]:
-                    su=playedCards[0].suit
-                    lst=map(getSuit,j.hand)
-                    card=False
-                    if su not in lst:
-
-                        card=False
-                        length=len(j.hand)
-
-                        while not card:
-
-                            k=0
-                            played=(input(p1_name + " plays: "))
-                            played=played.split(" ")
-
-                            while len(j.hand)==length and k<length:
-
-                                if played[0]==str(j.hand[k].rank) and played[1]==j.hand[k].suit:
-
-                                    p=j.hand.pop(k)
-                                    playedCards.append(p)
-                                    card=True
-
-                                k+=1
-
-                            if card==False:
-
-                                print (random.choice(["Player 2","Player 4"])+" says: Please stop cheating and play a valid card smh")
-
-                    else:
-
-                        card=False
-                        length=len(j.hand)
-
-                        while not card:
-
-                            k=0
-                            played=input(p1_name + " plays: ")
-                            played=played.split(" ")
-
-                            while len(j.hand)==length and k<length:
-
-                                if played[0]==str(j.hand[k].rank) and played[1]==j.hand[k].suit and played[1]==su:
-
-                                    p=j.hand.pop(k)
-                                    playedCards.append(p)
-                                    card=True
-
-                                k+=1
-
-                            if card==False:
-
-                                print (random.choice(["Player 2","Player 4"])+" says: Please stop cheating and play a valid card smh.")
-
-            else:
-
-                if playedCards==[]:
-
-                    temp=filter(lambda x:x.suit!=trump,j.hand)
-
-                    if temp!=[]:
-
-                        g=temp[-1]
-                        ranks=[2,3,4,5,6,7,8,9,10,'Jack','Queen','King','Ace']
-
-                        for i in temp:
-
-                            if ranks.index(i.rank)>ranks.index(g.rank) and \
-                                    True not in [u.suit==i.suit and ranks.index(u.rank)>ranks.index(i.rank) for u in discardedCards]:
-                                g=i
-
-                        if g==temp[-1]:
-
-                            y=temp[-1]
-                            if [x for x in temp if ranks.index(x.rank)<ranks.index(y.rank)]:
-                                g=[x for x in temp if ranks.index(x.rank)<ranks.index(y.rank)][0]
-
-                        playedCards.append(g)
-                        p=j.hand.pop(j.hand.index(g))
-
-                    else:
-
-                        temp=filter(lambda x:x.suit==trump,j.hand)
-                        g=temp[-1]
-                        ranks=[2,3,4,5,6,7,8,9,10,'Jack','Queen','King','Ace']
-
-                        for i in temp:
-
-                            if ranks.index(i.rank)>ranks.index(g.rank) and \
-                                    True not in [u.suit==i.suit and ranks.index(u.rank)>ranks.index(temp[-1].rank) for u in discardedCards]:
-                                g=i
-                        playedCards.append(g)
-                        p=j.hand.pop(j.hand.index(g))
-
-                else:
-                    temp=filter(lambda x:x.suit==playedCards[0].suit,j.hand)
-                    if temp==[]:
-                        test=[x.suit==trump for x in playedCards]
-                        temp1=filter(lambda x:x.suit==trump,j.hand)
-                        # use other algorithm here with change
-                        gr=None
-                        temp1.reverse()
-
-                        for i in temp:
-                            test=[x>i.rank for x in playedCards]
-                            if False in test:
-                                gr=i
-                                break
-
-                        if gr!=None and temp!=[]:
-
-                            playedCards.append(gr)
-                            p=j.hand.pop(j.hand.index(gr))
-
-                        elif gr==None and temp!=[]:
-
-                            temp.reverse()
-                            playedCards.append(temp[-1])
-                            p=j.hand.pop(j.hand.index(temp[-1]))
-
-                        else:
-
-                            playedCards.append(j.hand[-1])
-                            p=j.hand.pop(-1)
-
-                    else:
-
-                        ranks=[2,3,4,5,6,7,8,9,10,'Jack','Queen','King','Ace']
-                        gr=temp[-1]
-                        test=[x.suit==trump for x in playedCards]
-
-                        if True in test:
-
-                            playedCards.append(temp[-1])
-                            p=j.hand.pop(j.hand.index(temp[-1]))
-
-                        else:
-
-                            gr=None
-                            temp.reverse()
-                            for i in temp:
-                                test=[ranks.index(x.rank)>ranks.index(i.rank) for x in playedCards]
-                                if False in test:
-                                    gr=i
-                                    break
-
-                            if gr!=None and temp!=[]:
-
-                                playedCards.append(gr)
-                                p=j.hand.pop(j.hand.index(gr))
-
-                            elif gr==None and temp!=[]:
-
-                                temp.reverse()
-                                playedCards.append(temp[-1])
-                                p=j.hand.pop(j.hand.index(temp[-1]))
-
-                            else:
-
-                                playedCards.append(j.hand[-1])
-                                p=j.hand.pop(-1)
-
-                print (j.name+" plays: "+str(p.rank)+" "+p.suit)
-
-        plays=playedCards
-
-        if True in [x.suit==trump for x in plays] and [x.suit==trump for x in plays].count(True)>1:
-
-            ranks
-            plays=[x for x in plays if x.suit==trump]
-            t=plays[0]
-            for i in plays:
-                if ranks.index(i.rank)>ranks.index(t.rank):
-                    t=i
-            t=playedCards.index(t)
-            winner=players[t]
-            players=resort(players,winner.name)
-
-            if winner.name==p1_name or winner.name== "Player 3":
-                yourTricks+=1
-
-            else:
-                opponentTricks+=1
-
-
-        elif True in [x.suit==trump for x in plays] and [x.suit==trump for x in plays].count(True)==1:
-
-            plays=[x for x in plays if x.suit==trump]
-            t=plays[0]
-            t=playedCards.index(t)
-            winner=players[t]
-            players=resort(players,winner.name)
-
-            if winner.name==p1_name or winner.name== "Player 3":
-                yourTricks+=1
-
-            else:
-                opponentTricks+=1
-
-        elif True not in [x.suit==trump for x in plays]:
-
-            plays=[x for x in plays if x.suit==playedCards[0].suit]
-            t=plays[0]
-            for i in plays:
-                if ranks.index(i.rank)>ranks.index(t.rank):
-                    t=i
-            t=playedCards.index(t)
-            winner=players[t]
-            players=resort(players,winner.name)
-
-            if winner.name==p1_name or winner.name== "Player 3":
-
-                yourTricks+=1
-
-            else:
-
-                opponentTricks+=1
-
-        print ("\nWinner is: " + winner.name + "\n")
-        print ("Your team's tricks: " + str(yourTricks))
-        print ("Opponents' tricks: " + str(opponentTricks))
-        if greatestBidder==p1_name or greatestBidder== "Player 3":
-
-            if yourTricks==greatest:
-
-                print ("Congratulations, you beat this tarneeb")
-                exit()
-
-            elif opponentTricks>13-greatest:
-
-                print ("Congratulations, you played yourself. In other words, You took an L :) ")
-                exit()
-        else:
-
-            if opponentTricks==greatest:
-
-                print ("Congratulations, you played yourself. In other words, You took an L :) ")
-                exit()
-
-            elif yourTricks>13-greatest:
-
-                print ("Congratulations, you beat this tarneeb")
-                exit()
-
-
-# play()

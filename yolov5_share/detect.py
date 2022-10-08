@@ -37,7 +37,7 @@ from collections import deque
 import math
 from collections import Counter
 import keyboard
-from Tarneeb.t_game2 import play, start
+from Tarneeb.t_game import play, start
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
