@@ -19,9 +19,9 @@ all image annotation and augmentation work in the project is done using the foll
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/MODAJ18/Playing_Cards.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[contributors-url]: https://github.com/MODAJ18/Playing_Cards/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/MODAJ18/Playing_Cards.svg?style=for-the-badge
+[forks-url]: https://github.com/MODAJ18/Playing_Cards/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
