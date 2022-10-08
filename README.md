@@ -56,9 +56,9 @@ Model is trained and built with yolov5m pretrained weights, with a dataset consi
 
 some examples of predictions with the detector are shown below:
 
-<img src="sample_predictions/1.jpg" alt="p1" width="800" height="800">
+<img src="sample_predictions/1.jpg" alt="p1" width="500" height="500">
 
-<img src="sample_predictions/2.png" alt="p2" width="800" height="800">
+<img src="sample_predictions/2.png" alt="p2" width="500" height="500">
 
 <br/>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
