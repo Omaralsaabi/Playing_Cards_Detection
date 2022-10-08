@@ -54,6 +54,13 @@ all image annotation and augmentation work in the project is done using the foll
 
 Model is trained and built with yolov5m pretrained weights, with a dataset consisting of a collection of 50000+ images
 
+some examples of predictions with the detector are shown below:
+
+<img src="sample_predictions/1.jpg" alt="p1" width="500" height="500">
+
+<img src="sample_predictions/2.png" alt="p2" width="500" height="500">
+
+<br/>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -71,28 +78,31 @@ you must have:
 
 ### Installation
 
-1. with CMD, navigate to root directory of the repo
-2. make a virtual environment
+1. Open command line (or terminal), clone the reopsitory, then navigate to repo directory
+```sh
+cd Playing_Cards
+```
+2. Make a virtual environment
 ```sh
 python -3 -m venv py-env
 ```
-3. install requirements 
+3. Activate virtual environment
+```sh
+py-env\Scripts\activate
+```
+4. Install requirements 
 ```sh
 pip install -r requirements.txt
 ```
-4. activate virtual environment
-```sh
-py-venv\Scripts\activate
-```
 5. download weights file for the playing card detector model <a href="https://drive.google.com/uc?export=download&id=1-CASlZnJ9E4eyXDamMLOCAdW29_0Voas">here</a>
-6. store the file in runs/train
+6. Store the file in yolov5_share/runs/model_trained
 7. back in root directory, navigate to yolov5_share
 ```sh
-cd yolov_share
+cd yolov5_share
 ```
 8. to start detection with webcam, type the following command
 ```sh
-python detect.py --weights runs/train/best.pt --source 0
+python detect.py --weights runs/model_trained/best.pt --source 0
 ```
 9. Upon launch of webcam window, you can play around with the detector (start playing tarneeb upon pressing t)
 
@@ -106,8 +116,8 @@ python detect.py --weights runs/train/best.pt --source 0
 - [x] Collecting Data
 - [x] Building Detector Model
 - [x] Test with Sample Images and Webcam
-- [x] Implement Tarneeb into the Detector
-- [ ] Building Another Model with Tensorflow API
+- [x] Write implementation for Tarneeb game using detector inputs
+- [ ] Building Another Model with Tensorflow Object Detection API
 - [ ] Stylizing Webcam Output for Tarneeb
 
 See the [open issues](https://github.com/MODAJ18/Playing_Cards/issues) for a full list of proposed features (and known issues).
