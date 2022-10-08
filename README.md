@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/MODAJ18/Playing_Cards">
-    <img src="header.png" alt="Logo" width="80" height="80">
+    <img src="header.png" alt="Logo" width="200" height="200">
   </a>
   
   <h1 align="center">Playing_Cards_Detector</h1>
