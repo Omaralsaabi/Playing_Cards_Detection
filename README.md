@@ -10,7 +10,7 @@
 <!-- HEADER -->
 <br />
 <div align="center">
-  <h3 align="center">Playing_Cards_Detector</h3>
+  <h1 align="center">Playing_Cards_Detector</h1>
   <p align="center">
     A Computer-Vision Project for detecting Playing Cards and Applying it to Tarneeb (with yolov5)
   </p>
@@ -137,7 +137,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Mohammad Almasri - [@linked](https://www.linkedin.com/in/mohammad-almasri-964867197/) - modaj18@gmail.com
+Mohammad Almasri - [@linkedin](https://www.linkedin.com/in/mohammad-almasri-964867197/) - modaj18@gmail.com
+Omar Alsabi - [@linkedin](https://www.linkedin.com/in/omar-alsaabi-32675b193/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
