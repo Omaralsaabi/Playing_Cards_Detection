@@ -98,7 +98,7 @@ pip install -r requirements.txt
 6. Store the file in yolov5_share/runs/train
 7. back in root directory, navigate to yolov5_share
 ```sh
-cd yolov_share
+cd yolov5_share
 ```
 8. to start detection with webcam, type the following command
 ```sh
