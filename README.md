@@ -86,13 +86,13 @@ cd Playing_Cards
 ```sh
 python -3 -m venv py-env
 ```
-3. install requirements 
+3. activate virtual environment
+```sh
+py-env\Scripts\activate
+```
+4. install requirements 
 ```sh
 pip install -r requirements.txt
-```
-4. activate virtual environment
-```sh
-py-venv\Scripts\activate
 ```
 5. download weights file for the playing card detector model <a href="https://drive.google.com/uc?export=download&id=1-CASlZnJ9E4eyXDamMLOCAdW29_0Voas">here</a>
 6. store the file in runs/train
