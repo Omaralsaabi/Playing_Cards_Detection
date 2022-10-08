@@ -11,7 +11,7 @@
 Project for building Playing Card Objects detection model, and applying it in the context of the game 'Tarneeb'
 
 all image annotation and augmentation work in the project is done using the following tools:
-- 
+
 
 ## Objective
 
