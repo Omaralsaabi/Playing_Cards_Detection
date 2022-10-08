@@ -27,7 +27,7 @@ all image annotation and augmentation work in the project is done using the foll
 [issues-shield]: https://img.shields.io/github/issues/MODAJ18/Playing_Cards.svg?style=for-the-badge
 [issues-url]: https://github.com/MODAJ18/Playing_Cards/issues
 [license-shield]: https://img.shields.io/github/license/MODAJ18/Playing_Cards.svg?style=for-the-badge
-[license-url]: https://github.com/MODAJ18/Playing_Cards/LICENSE.txt
+[license-url]: https://github.com/MODAJ18/Playing_Cards/blob/master/License.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/mohammad-almasri-964867197/
 
