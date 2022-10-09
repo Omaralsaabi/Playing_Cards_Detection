@@ -169,4 +169,4 @@ Omar Alsabi - [@linkedin](https://www.linkedin.com/in/omar-alsaabi-32675b193/)
 [license-shield]: https://img.shields.io/github/license/MODAJ18/Playing_Cards.svg?style=for-the-badge
 [license-url]: https://github.com/MODAJ18/Playing_Cards/blob/master/License.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/mohammad-almasri-964867197/
+[linkedin-url]: https://www.linkedin.com/in/omar-alsaabi-32675b193/
