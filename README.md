@@ -151,7 +151,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Mohammad Almasri - [@linkedin](https://www.linkedin.com/in/mohammad-almasri-964867197/) - modaj18@gmail.com
 
-Omar Alsabi - [@linkedin](https://www.linkedin.com/in/omar-alsaabi-32675b193/)
+Omar Alsabi - [@linkedin](https://www.linkedin.com/in/omar-alsaabi-32675b193/) - prof.omaralsaabi@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
